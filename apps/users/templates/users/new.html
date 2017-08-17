@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Users New</title>
+        {%load static%}
+        <link rel="stylesheet" href="{% static 'users/style.css' %}" media="screen" title="no title"  charset="utf-8">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        {% if messages %}
+            <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+            </ul>
+        {% endif %}
+        <form action="/create" method='post'>
+          {% csrf_token %}
+        <h1>Add a new user</h1>
+        <p>Full Name:</p><input type="text" name="first_name">
+        <p>Last Name:</p><input type="text" name="last_name">
+        <p>Email:</p><input type="text" name="email">
+        <input type="submit" value="Create">
+        <br>
+        <br>
+        <p><a href="/edit/{{data3.id}}">Edit</a>|<a href="/delete/{{data3.id}}">Delete</a></p>
+        </form>
+    </body>
+</html>
