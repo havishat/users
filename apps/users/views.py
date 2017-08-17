@@ -40,6 +40,10 @@ def update(request, id):
         user = User.objects.get(id = id)
         user.first_name = request.POST['first_name']
         user.save()
+        user.last_name = request.POST['last_name']
+        user.save()
+        user.email = request.POST['email']
+        user.save()
         return redirect('/')
 
 def edit(request, id):
